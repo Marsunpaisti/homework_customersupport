@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { SupportTicket } from './support-tickets.entity';
@@ -21,6 +21,6 @@ export class SupportTicketsService {
   }
 
   public async addOne(ticket: SupportTicket) {
-    return this.supportTicketRepository.insert(ticket);
+    return (await this.supportTicketRepository.insert(ticket)).identifiers?.[0];
   }
 }
