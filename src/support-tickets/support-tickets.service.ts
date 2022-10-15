@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { SupportTicket } from './support-tickets.entity';
@@ -12,6 +12,12 @@ export class SupportTicketsService {
 
   public async findAll() {
     return this.supportTicketRepository.find();
+  }
+  public async findById(id: number) {
+    const ticket: SupportTicket | null =
+      await this.supportTicketRepository.findOneByOrFail({ id });
+
+    return ticket;
   }
 
   public async addOne(ticket: SupportTicket) {

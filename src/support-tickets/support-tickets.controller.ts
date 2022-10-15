@@ -1,4 +1,11 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  ParseIntPipe,
+} from '@nestjs/common';
 import { SupportTicket } from './support-tickets.entity';
 import { SupportTicketsService } from './support-tickets.service';
 
@@ -8,6 +15,11 @@ export class SupportTicketsController {
   @Get()
   getAllTickets() {
     return this.supportTicketsService.findAll();
+  }
+
+  @Get(':id')
+  getById(@Param('id', ParseIntPipe) id: number) {
+    return this.supportTicketsService.findById(id);
   }
 
   @Post()
