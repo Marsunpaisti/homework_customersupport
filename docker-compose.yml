@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+  database:
+    image: postgres:15
+    container_name: backend-db
+    command: ['postgres', '-c', 'log_statement=all']
+    environment:
+      - POSTGRES_DB=backend-db
+      - POSTGRES_USER=testuser
+      - POSTGRES_PASSWORD=testpassword
+    ports:
+      - '5432:5432'
