@@ -3,8 +3,8 @@ import { IsEmail, IsPhoneNumber, Length } from 'class-validator';
 
 @Entity()
 export class SupportTicket {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
   @Column()
   @Length(1, 50)

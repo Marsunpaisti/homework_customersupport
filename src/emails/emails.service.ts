@@ -14,7 +14,7 @@ export class EmailsService {
   async SendSupportTicketEmail(ticket: SupportTicket) {
     const options: ISendMailOptions = {
       to: ticket.email,
-      subject: `New support ticket (#${ticket.id}) from ${ticket.firstName} ${ticket.lastName}`,
+      subject: `New support ticket from ${ticket.firstName} ${ticket.lastName} (${ticket.id})`,
       template: 'supportticket',
       context: {
         ...ticket,

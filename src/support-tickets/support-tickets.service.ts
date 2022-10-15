@@ -13,7 +13,7 @@ export class SupportTicketsService {
   public async findAll() {
     return this.supportTicketRepository.find();
   }
-  public async findById(id: number) {
+  public async findById(id: string) {
     const ticket: SupportTicket | null =
       await this.supportTicketRepository.findOneByOrFail({ id });
 

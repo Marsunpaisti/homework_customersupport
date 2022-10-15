@@ -23,7 +23,7 @@ export class SupportTicketsController {
   }
 
   @Get(':id')
-  getById(@Param('id', ParseIntPipe) id: number) {
+  getById(@Param('id') id: string) {
     return this.supportTicketsService.findById(id);
   }
 
